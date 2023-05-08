@@ -13,7 +13,7 @@ public class Prodotto {
 	Random rnd = new Random();
 	
 	public Prodotto(String name, String description, double price, int vat) {
-		id = rnd.nextInt();
+		id = rnd.nextInt(99999999);
 		setName(name);
 		setDescription(description);
 		setPrice(price);
@@ -60,7 +60,22 @@ public class Prodotto {
 		return price += (price * vat) / 100;
 	}
 	
+	public String getFormattedId() {
+		String code = "" + getId();
+		if (code.length() < 8) code = "0" + code;
+		return code;
+	}
+	
 	public String getCommercialName() {
-		return "[codice prodotto: " + id + "]" + " " + name;
+		return "[codice prodotto: " + getFormattedId() + "]" + " " + name;
+	}
+	
+	@Override
+	public String toString() {
+		return getCommercialName() 
+				+ ", Descrizione: " + getDescription() 
+				+ ", Prezzo senza inva: " + getPrice()
+				+ ", iva prodotto: " + getVat()
+				+ ", Prezzo con iva: " + getCommercialPrice();
 	}
 }
