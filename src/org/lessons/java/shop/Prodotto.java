@@ -14,6 +14,10 @@ public class Prodotto {
 	
 	public Prodotto(String name, String description, double price, int vat) {
 		id = rnd.nextInt();
+		setName(name);
+		setDescription(description);
+		setPrice(price);
+		setVat(vat);
 	}
 	
 	public int getId() {
