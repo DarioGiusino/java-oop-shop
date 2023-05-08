@@ -7,10 +7,28 @@ public class Bank {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Inserisci il tuo nome per creare il conto...");
 		String userName = sc.next();
-		sc.close();
 		
 		Conto c = new Conto(userName);
-		c.addMoney(2000);
-		System.out.println(c);
+		
+		System.out.println("Benvenuto, " + userName 
+				+ "\n Inserisci 1 per aggiungere denaro,"
+				+ "2 per prelevare denaro"
+				+ "o 3 per uscire.");
+		String userChoice = sc.next();
+		
+		if(userChoice.equals("1")) {
+			System.out.println("inserisci l'importo da versare...");
+			int addAmount = sc.nextInt();
+			c.addMoney(addAmount);
+			System.out.println(c);
+		} else if (userChoice.equals("2")) {
+			System.out.println("inserisci l'importo da prelevare...");
+			int withdrawAmount = sc.nextInt();
+			c.withdrawMoney(withdrawAmount);
+			System.out.println(c);
+		} else {
+			System.out.println("grazie e arrivederci");
+			System.out.println(c);
+		}
 	}
 }
